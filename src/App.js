@@ -1,69 +1,84 @@
 import React, { useState } from 'react';
+// import ProductPage from './components/ProductPage';
+import OrderPage from './components/OrderPage';
 import './App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState('orders'); // Default to orders page
+
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'products':
+        // return <ProductPage />;
+      case 'orders':
+        return <OrderPage />;
+      case 'pricing':
+        return (
+          <div style={{ padding: '20px' }}>
+            <h2>💰 Selling Prices Management</h2>
+            <p>Pricing page coming soon...</p>
+          </div>
+        );
+      default:
+        return <OrderPage />;
+    }
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>🎄 Christmas Inventory System</h1>
-        <p>✅ React App is Working!</p>
         
-        <nav style={{ margin: '20px 0' }}>
-          <button 
-            onClick={() => setCurrentPage('home')}
-            style={{ margin: '5px', padding: '10px 20px' }}
-          >
-            Home
-          </button>
+        {/* Navigation */}
+        <nav style={{ margin: '20px 0', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
           <button 
             onClick={() => setCurrentPage('products')}
-            style={{ margin: '5px', padding: '10px 20px' }}
+            style={{ 
+              padding: '12px 24px', 
+              backgroundColor: currentPage === 'products' ? '#007bff' : '#6c757d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '16px'
+            }}
           >
-            Products
+            📦 Products
           </button>
           <button 
             onClick={() => setCurrentPage('orders')}
-            style={{ margin: '5px', padding: '10px 20px' }}
+            style={{ 
+              padding: '12px 24px', 
+              backgroundColor: currentPage === 'orders' ? '#007bff' : '#6c757d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '16px'
+            }}
           >
-            Orders
+            🛒 Orders
           </button>
           <button 
             onClick={() => setCurrentPage('pricing')}
-            style={{ margin: '5px', padding: '10px 20px' }}
+            style={{ 
+              padding: '12px 24px', 
+              backgroundColor: currentPage === 'pricing' ? '#007bff' : '#6c757d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '16px'
+            }}
           >
-            Selling Prices
+            💰 Selling Prices
           </button>
         </nav>
 
-        {currentPage === 'home' && (
-          <div>
-            <h2>Welcome to Christmas Inventory!</h2>
-            <p>Select a page from the navigation above to get started.</p>
-          </div>
-        )}
-
-        {currentPage === 'products' && (
-          <div>
-            <h2>📦 Products Management</h2>
-            <p>Product page coming soon...</p>
-          </div>
-        )}
-
-        {currentPage === 'orders' && (
-          <div>
-            <h2>🛒 Orders Management</h2>
-            <p>Orders page coming soon...</p>
-          </div>
-        )}
-
-        {currentPage === 'pricing' && (
-          <div>
-            <h2>💰 Selling Prices Management</h2>
-            <p>Pricing page coming soon...</p>
-          </div>
-        )}
+        {/* Page Content */}
+        <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+          {renderPage()}
+        </div>
       </header>
     </div>
   );
