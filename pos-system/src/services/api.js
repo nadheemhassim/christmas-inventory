@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 // For development - replace with your Azure URL later
-const API_BASE = 'https://your-azure-backend.azurewebsites.net/api';
+// const API_BASE = 'https://your-azure-backend.azurewebsites.net/api';
+
+// api.js - Update the API_BASE URL
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://christmasinventory-wa-fbd9fabzeudzc3h2.southeastasia-01.azurewebsites.net/api';
 
 const apiClient = axios.create({
   baseURL: API_BASE,
