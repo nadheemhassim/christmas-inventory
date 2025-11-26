@@ -1,8 +1,14 @@
 {
   "navigationFallback": {
-    "rewrite": "/index.html"
+    "rewrite": "/index.html",
+    "exclude": ["*.{css,js,png,jpg,jpeg,gif,ico,json,txt}"]
   },
   "routes": [
+    {
+      "route": "/api/*",
+      "methods": ["GET", "POST", "PUT", "DELETE"],
+      "allowedRoles": ["anonymous"]
+    },
     {
       "route": "/*",
       "serve": "/index.html",
@@ -10,6 +16,15 @@
     }
   ],
   "mimeTypes": {
-    ".json": "text/json"
+    ".json": "application/json"
+  },
+  "globalHeaders": {
+    "Content-Security-Policy": "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https:;",
+    "X-Frame-Options": "DENY"
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html"
+    }
   }
 }
