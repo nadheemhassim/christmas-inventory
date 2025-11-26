@@ -1,11 +1,11 @@
 import React from 'react';
-import OrderPage from './components/OrderPage';
-import './styles/OrderPage.css';
 
 function App() {
   return (
-    <div className="App">
-      <OrderPage />
+    <div style={{ padding: '50px', textAlign: 'center' }}>
+      <h1>🎄 Christmas Inventory POS</h1>
+      <p>Application is loading successfully!</p>
+      <p>React is working on Azure Web Apps.</p>
     </div>
   );
 }
