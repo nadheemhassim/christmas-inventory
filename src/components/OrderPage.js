@@ -78,31 +78,50 @@ const OrderPage = () => {
   };
 
   // Process order
-  const processOrder = () => {
-    if (cart.length === 0) {
-      alert('Please add items to cart!');
-      return;
-    }
+//   const processOrder = () => {
+//     if (cart.length === 0) {
+//       alert('Please add items to cart!');
+//       return;
+//     }
 
-    const orderData = {
-      customerId: selectedCustomer,
-      items: cart,
-      subtotal: calculateSubtotal(),
-      discount: orderDiscount,
-      delivery: deliveryCharge,
-      grandTotal: calculateGrandTotal(),
-      timestamp: new Date().toLocaleString()
-    };
+//     const orderData = {
+//       customerId: selectedCustomer,
+//       items: cart,
+//       subtotal: calculateSubtotal(),
+//       discount: orderDiscount,
+//       delivery: deliveryCharge,
+//       grandTotal: calculateGrandTotal(),
+//       timestamp: new Date().toLocaleString()
+//     };
 
-    // For now, just show alert - later we'll save to database
-    alert(`Order processed successfully!\nTotal: $${calculateGrandTotal().toFixed(2)}`);
+//     // For now, just show alert - later we'll save to database
+//     alert(`Order processed successfully!\nTotal: $${calculateGrandTotal().toFixed(2)}`);
     
-    // Clear cart
-    setCart([]);
-    setOrderDiscount(0);
-    setDeliveryCharge(0);
-    setSelectedCustomer('');
-  };
+//     // Clear cart
+//     setCart([]);
+//     setOrderDiscount(0);
+//     setDeliveryCharge(0);
+//     setSelectedCustomer('');
+//   };
+
+
+
+// Process order
+const processOrder = () => {
+  if (cart.length === 0) {
+    alert('Please add items to cart!');
+    return;
+  }
+
+  // For now, just show alert - later we'll save to database
+  alert(`Order processed successfully!\nTotal: $${calculateGrandTotal().toFixed(2)}`);
+  
+  // Clear cart
+  setCart([]);
+  setOrderDiscount(0);
+  setDeliveryCharge(0);
+  setSelectedCustomer('');
+};
 
 //   return (
 //     <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
